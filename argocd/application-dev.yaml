@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: sample-app-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pranay9-h/eks-argocd-gitops.git
+    targetRevision: master
+    path: helm/sample-app
+    helm:
+      valueFiles:
+        - ../../environments/dev-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: sample-app-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
