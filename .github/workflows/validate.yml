@@ -1,0 +1,33 @@
+name: Validate GitOps Manifests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Helm
+        uses: azure/setup-helm@v4
+
+      - name: Helm lint
+        run: helm lint helm/sample-app
+
+      - name: Render dev manifests
+        run: helm template sample-app-dev helm/sample-app -f environments/dev-values.yaml > /tmp/dev.yaml
+
+      - name: Render prod manifests
+        run: helm template sample-app-prod helm/sample-app -f environments/prod-values.yaml > /tmp/prod.yaml
+
+      - name: Verify rendered manifests are non-empty
+        run: test -s /tmp/dev.yaml && test -s /tmp/prod.yaml
