@@ -1,0 +1,14 @@
+replicaCount: 3
+
+config:
+  appEnv: prod
+
+image:
+  repository: ghcr.io/pranay9-h/sample-app
+  tag: latest
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 8
+  targetCPUUtilizationPercentage: 65
