@@ -11,7 +11,7 @@ spec:
     path: helm/sample-app
     helm:
       valueFiles:
-        - ../../environments/prod-values.yaml
+        - values-prod.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: sample-app-prod
