@@ -48,13 +48,12 @@ See [docs/gitops-workflow.md](docs/gitops-workflow.md) for the end-to-end reconc
 │   └── application-prod.yaml
 ├── docs/
 │   └── gitops-workflow.md
-├── environments/
-│   ├── dev-values.yaml
-│   └── prod-values.yaml
 ├── helm/
 │   └── sample-app/
 │       ├── Chart.yaml
 │       ├── values.yaml
+│       ├── values-dev.yaml
+│       ├── values-prod.yaml
 │       └── templates/
 │           ├── _helpers.tpl
 │           ├── configmap.yaml
@@ -95,8 +94,8 @@ Install Helm and run:
 
 ```bash
 helm lint helm/sample-app
-helm template sample-app-dev helm/sample-app -f environments/dev-values.yaml
-helm template sample-app-prod helm/sample-app -f environments/prod-values.yaml
+helm template sample-app-dev helm/sample-app -f helm/sample-app/values-dev.yaml
+helm template sample-app-prod helm/sample-app -f helm/sample-app/values-prod.yaml
 ```
 
 ## Kubernetes controls
