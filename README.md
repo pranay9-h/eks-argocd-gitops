@@ -1,6 +1,8 @@
 # EKS ArgoCD GitOps Platform
 
-Production-style GitOps portfolio project demonstrating Kubernetes application delivery to Amazon EKS using Helm and Argo CD.
+[![Validate GitOps Manifests](https://github.com/pranay9-h/eks-argocd-gitops/actions/workflows/validate.yml/badge.svg?branch=master)](https://github.com/pranay9-h/eks-argocd-gitops/actions/workflows/validate.yml)
+
+GitOps delivery platform for Kubernetes/EKS using Helm and Argo CD with environment-specific values, automated reconciliation, health probes, and HPA.
 
 > **Portfolio safety:** this repository does not contain AWS credentials, kubeconfig files, or real application secrets. Deploying to a live EKS cluster can create AWS charges.
 
@@ -252,4 +254,5 @@ This project is intentionally structured to support technical interviews around:
 ## Author
 
 Pranay Saiteja Soppadandi  
-GitHub: https://github.com/pranay9-h
+GitHub: https://github.com/pranay9-h  
+LinkedIn: https://www.linkedin.com/in/pranay-sai-teja-2b257b1a1/
